@@ -27,23 +27,23 @@ public class ThreeDMatrixOP6 {
 			System.out.println("k must be -10 - 10");
 			return;
 		}
-		// 交换i和j行
+		// Swap the i and j lines
 		double[][] afterSwap = swapIJ(m1, i, j);
-		// 对矩阵乘上k
+		// Multiply k by the matrix
 		double[][] afterProduction = numProduction(afterSwap, k);
-		// 将第j行加到第i行上
+		// Add line j to line i
 		double[][] afterADD = ADD(afterProduction, j, i);
-		// 计算特征值之和
+		// Calculate the sum of eigenvalues
 		double eigenSum = trace(afterADD);
-		// 计算特征值之积
+		// Calculate the product of eigenvalues
 		double eigenProduction = eigenPro(afterADD);
-		// 计算特征值之积和之和的比值
+		// Calculate the ratio of the sum of the products of the eigenvalues
 		double res = divide(eigenProduction, eigenSum);
 		res = (double) (Math.round(res * 100) / 100);
 		System.out.println(res);
 	}
 
-	// 矩阵数乘。将所有元素与K相乘
+	// Multiplication of matrix numbers. Multiply all elements by K
 	public static double[][] numProduction(double[][] a, double k) {
 		if (a.length != 3 || a[0].length != 3) {
 			return null;
@@ -57,7 +57,7 @@ public class ThreeDMatrixOP6 {
 		return result;
 	}
 
-	// 将矩阵的第i行加到第j行上。
+	// Add row i of the matrix to line j.
 	public static double[][] ADD(double[][] a, int i, int j) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return null;
@@ -75,7 +75,7 @@ public class ThreeDMatrixOP6 {
 		return result;
 	}
 
-	// 交换第i行和第j行
+	// Swap lines i and j
 	public static double[][] swapIJ(double[][] a, int i, int j) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return null;
@@ -95,7 +95,8 @@ public class ThreeDMatrixOP6 {
 		return result;
 	}
 
-	// 计算三阶矩阵的trace，并对100007取余
+	// Calculate the trace of the third-order matrix and take the remainder of the
+	// 100007
 	public static double trace(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
@@ -106,7 +107,8 @@ public class ThreeDMatrixOP6 {
 		return trace;
 	}
 
-	// 计算三阶矩阵的特征值之积，并对100007取余
+	// The product of the eigenvalues of the third-order matrix is calculated, and
+	// the remainder of the 100007 is calculated
 	public static double eigenPro(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
@@ -117,7 +119,7 @@ public class ThreeDMatrixOP6 {
 		return trace;
 	}
 
-	// 计算两数比值
+	// Calculate the ratio of two digits
 	public static double divide(double a, double b) {
 		if (b < 1 && b > -1) {
 			return a;

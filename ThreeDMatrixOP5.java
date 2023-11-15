@@ -13,20 +13,23 @@ public class ThreeDMatrixOP5 {
 		m1[2][1] = Double.parseDouble(args[7]);
 		m1[2][2] = Double.parseDouble(args[8]);
 		int k = Integer.parseInt(args[9]);
-		// 计算L0范数
+		// Calculate the L0 norm
 		int l0 = L0(m1);
-		// 计算L1范数
+		// Calculate the L1 norm
 		double l1 = L1(m1);
-		// 计算L2范数
+		// Calculate the L2 norm
 		double l2 = L2(m1);
-		// 计算LK范数
+		// Calculate the Lk norm
 		double lk = LK(m1, k);
-		// 计算四范数之平均值，输出结果
+		// Calculate the average of the four norms
 		double res = average(l0, l1, l2, lk);
+		res = (double) (Math.round(res * 100) / 100.0);
 		System.out.println(res);
 	}
 
-	// 计算L0范数。此处定义L0范数为所有元素中绝对值大于等于0.75的个数
+	// Calculate the L0 norm.
+	// The L0 norm is defined here as the number of elements with an absolute value
+	// greater than or equal to 0.75
 	public static int L0(double[][] a) {
 		if (a.length != 3 || a[0].length != 3) {
 			return -1;
@@ -42,7 +45,8 @@ public class ThreeDMatrixOP5 {
 		return result;
 	}
 
-	// 计算L1范数。L1范数为所有元素绝对值之和
+	// Calculate the L1 norm.
+	// The L1 norm is the sum of the absolute values of all elements
 	public static double L1(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return -1.0;
@@ -57,7 +61,9 @@ public class ThreeDMatrixOP5 {
 
 	}
 
-	// 计算L2范数。L2范数为所有元素平方和的开平方数，即欧氏距离
+	// Calculate the L2 norm.
+	// The L2 norm is the open square of the sum of all elements,
+	// i.e., the Euclidean distance
 	public static double L2(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
@@ -72,7 +78,11 @@ public class ThreeDMatrixOP5 {
 		return result;
 	}
 
-	// 计算LK范数。此处定义LK范数为所有元素K次方和的三次根。在计算K次方和时，采用累加的形式。每次累加都会对100000007取余，防止溢出
+	// Calculate the LK norm.
+	// Here the LK norm is defined as the cubic root of the sum of all elements to
+	// the power K.
+	// When calculating the sum to the power of K, the form of accumulation is used.
+	// Each accumulation takes a surplus of 100000007 to prevent overflow
 	public static double LK(double[][] a, int K) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
@@ -91,7 +101,7 @@ public class ThreeDMatrixOP5 {
 		return result;
 	}
 
-	// 计算L0, L1, L2, LK范数之和，取平均数
+	// Calculate the sum of L0, L1, L2, LK norms, and take the average
 	public static double average(int l0, double l1, double l2, double lk) {
 		double result = 0.0;
 		result = result + (double) l0;
