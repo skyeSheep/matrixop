@@ -3,6 +3,7 @@ package matrixop;
 public class ThreeDMatrixOP {
 	public static void main(String[] args) {
 		double[][] m1 = { { 1, 2, 4 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		// read all the inputs as the input matrix
 		m1[0][0] = Double.parseDouble(args[0]);
 		m1[0][1] = Double.parseDouble(args[1]);
 		m1[0][2] = Double.parseDouble(args[2]);
@@ -12,20 +13,27 @@ public class ThreeDMatrixOP {
 		m1[2][0] = Double.parseDouble(args[6]);
 		m1[2][1] = Double.parseDouble(args[7]);
 		m1[2][2] = Double.parseDouble(args[8]);
+
+		// get the accompany matrix of m1
 		double[][] acc = accompany(m1);
-		double[][] divideRes = newOP(acc);
+		// do a self-defined operation to the accompany matrix
+		double[][] divideMatrix = newOP(acc);
+
 //		printMatrix(m1);
 //		printMatrix(acc);
-//		printMatrix(divideRes);
+//		printMatrix(divideMatrix);
 //		double determine_m1 = determinant(m1);
 //		double determine_acc = determinant(acc);
-		double determine_divideRes = determinant(divideRes);
 //		System.out.println(determine_m1);
 //		System.out.println(determine_acc);
-		System.out.println(determine_divideRes);
+
+		// calculate the determine of the previous matrix
+		double determine_divideMatrix = determinant(divideMatrix);
+		determine_divideMatrix = (double) (Math.round(determine_divideMatrix * 100) / 100.0);
+		System.out.println(determine_divideMatrix);
 	}
 
-	// 计算三阶矩阵的伴随矩阵
+	// calculate accompany matrix of an input third-order matrix
 	public static double[][] accompany(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return null;
@@ -43,7 +51,7 @@ public class ThreeDMatrixOP {
 		return result;
 	}
 
-	// 计算三阶矩阵的行列式
+	// calculate determine of an input third-order matrix
 	public static double determinant(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
@@ -57,7 +65,9 @@ public class ThreeDMatrixOP {
 		return a1 + a2 + a3 - b1 - b2 - b3;
 	}
 
-	// 定义新运算：对三阶矩阵的第一、二、三行，用134,97,113除以他们。如果本身值在-1和1之间，则不做任何操作.
+	// divide the first, second, and third rows of the third-order matrix by 134,
+	// 97, and 113.
+	// If the value itself is between -1 and 1, nothing is done.
 	public static double[][] newOP(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return null;

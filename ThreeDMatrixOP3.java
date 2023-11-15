@@ -3,6 +3,7 @@ package matrixop;
 public class ThreeDMatrixOP3 {
 	public static void main(String[] args) {
 		double[][] m1 = { { 1, 2, 4 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		// read all the inputs as the input matrix
 		m1[0][0] = Double.parseDouble(args[0]);
 		m1[0][1] = Double.parseDouble(args[1]);
 		m1[0][2] = Double.parseDouble(args[2]);
@@ -12,16 +13,17 @@ public class ThreeDMatrixOP3 {
 		m1[2][0] = Double.parseDouble(args[6]);
 		m1[2][1] = Double.parseDouble(args[7]);
 		m1[2][2] = Double.parseDouble(args[8]);
-		// 矩阵相乘
+		// matrix multiply
 		double[][] production = multiply(m1, m1);
-		// 矩阵相加
+		// matrix add
 		double[][] acc = add(production, m1);
-		// 计算行列式
+		// matrix determine
 		double res = determinant(acc);
 		System.out.println(res);
 	}
 
-	// 计算3*3矩阵与3*3矩阵的乘积，得到三阶矩阵
+	// The product of the 3*3 matrix and the 3*3 matrix is calculated to obtain the
+	// third-order matrix
 	public static double[][] multiply(double[][] a, double[][] b) {
 		if (a.length != 3 || a[0].length != 3 || b.length != 3 || b[0].length != 3) {
 			return null;
@@ -57,7 +59,7 @@ public class ThreeDMatrixOP3 {
 
 	}
 
-	// 计算三阶矩阵的行列式
+	// Calculate the determinant of the third-order matrix
 	public static double determinant(double[][] a) {
 		if (a.length != 3 || a.length != a[0].length) {
 			return 0.0;
