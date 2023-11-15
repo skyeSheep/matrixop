@@ -1,0 +1,1 @@
+Here are six Java programs that can be run independently, all of which are implementations of some important basic operations on third-order matrices. These include determinants, traces, norms, adjoint matrices, inverse matrices, and so on
